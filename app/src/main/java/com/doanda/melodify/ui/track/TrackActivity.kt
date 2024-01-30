@@ -1,8 +1,11 @@
 package com.doanda.melodify.ui.track
 
+import android.content.Intent
 import android.content.res.ColorStateList
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Parcelable
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
@@ -20,7 +23,13 @@ class TrackActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val track = intent.getParcelableExtra<Track>(EXTRA_TRACK)
+        val track: Track?
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            track = intent.getParcelableExtra(EXTRA_TRACK, Track::class.java)
+        } else {
+            @Suppress("DEPRECATION")
+            track = intent.getParcelableExtra(EXTRA_TRACK)
+        }
 
         if (track != null) displayTrackDetail(track)
     }
