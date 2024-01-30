@@ -1,10 +1,10 @@
 package com.doanda.melodify.ui.home
 
 import androidx.lifecycle.ViewModel
-import com.doanda.melodify.core.data.TrackRepository
+import androidx.lifecycle.asLiveData
 import com.doanda.melodify.core.domain.usecase.TrackUseCase
 
 class HomeViewModel(trackUseCase: TrackUseCase) : ViewModel() {
 
-    val tracks = trackUseCase.getAllTracks()
+    val tracks = trackUseCase.getAllTracks().asLiveData()
 }

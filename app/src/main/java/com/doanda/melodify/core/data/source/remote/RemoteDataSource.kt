@@ -1,15 +1,13 @@
 package com.doanda.melodify.core.data.source.remote
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.doanda.melodify.core.data.source.remote.network.ApiResponse
 import com.doanda.melodify.core.data.source.remote.network.ApiService
 import com.doanda.melodify.core.data.source.remote.response.TrackResponse
-import com.doanda.melodify.core.data.source.remote.response.TracksResponse
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 
 class RemoteDataSource private constructor(private val apiService: ApiService) {
     companion object {
@@ -22,28 +20,22 @@ class RemoteDataSource private constructor(private val apiService: ApiService) {
             }
     }
 
-    fun getAllTracks(): LiveData<ApiResponse<List<TrackResponse>>> {
-        val resultData = MutableLiveData<ApiResponse<List<TrackResponse>>>()
+    suspend fun getAllTracks(): Flow<ApiResponse<List<TrackResponse>>> {
+        return flow {
+            try {
+                val response = apiService.getTracks()
+                val dataArray = response.tracks.data
+                if (dataArray.isNotEmpty()) {
+                    emit(ApiResponse.Success(response.tracks.data))
 
-        //get data from remote api
-        val client = apiService.getTracks()
-
-        client.enqueue(object : Callback<TracksResponse> {
-            override fun onResponse(
-                call: Call<TracksResponse>,
-                response: Response<TracksResponse>
-            ) {
-                val dataArray = response.body()?.tracks?.data
-                resultData.value = if (dataArray != null) ApiResponse.Success(dataArray) else ApiResponse.Empty
+                } else {
+                    emit(ApiResponse.Empty)
+                }
+            } catch( e: Exception) {
+                emit(ApiResponse.Error(e.toString()))
+                Log.e("RemoteDataSource", e.toString())
             }
-
-            override fun onFailure(call: Call<TracksResponse>, t: Throwable) {
-                resultData.value = ApiResponse.Error(t.message.toString())
-                Log.e("RemoteDataSource", t.message.toString())
-            }
-        })
-
-        return resultData
+        }.flowOn(Dispatchers.IO)
     }
 }
 
