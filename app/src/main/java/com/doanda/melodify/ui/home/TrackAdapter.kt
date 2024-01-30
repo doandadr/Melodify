@@ -1,4 +1,4 @@
-package com.doanda.easymeal.ui.track
+package com.doanda.melodify.ui.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.doanda.melodify.R
 import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.databinding.ItemTrackBinding
 

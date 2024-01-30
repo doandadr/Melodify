@@ -30,10 +30,10 @@ class TrackRepository private constructor(
             }
     }
 
-    fun getAllTrack(): LiveData<Resource<List<Track>>> =
+    fun getAllTracks(): LiveData<Resource<List<Track>>> =
         object : NetworkBoundResource<List<Track>, List<TrackResponse>>(appExecutors) {
             override fun loadFromDB(): LiveData<List<Track>> {
-                return localDataSource.getAllTrack().map { DataMapper.mapEntitiesToDomain(it) }
+                return localDataSource.getAllTracks().map { DataMapper.mapEntitiesToDomain(it) }
             }
 
             override fun shouldFetch(data: List<Track>?): Boolean =
@@ -48,8 +48,8 @@ class TrackRepository private constructor(
             }
         }.asLiveData()
 
-    fun getFavoriteTrack(): LiveData<List<Track>> {
-        return localDataSource.getFavoriteTrack().map { DataMapper.mapEntitiesToDomain(it) }
+    fun getFavoriteTracks(): LiveData<List<Track>> {
+        return localDataSource.getFavoriteTracks().map { DataMapper.mapEntitiesToDomain(it) }
     }
 
     fun setFavoriteTrack(track: Track, state: Boolean) {

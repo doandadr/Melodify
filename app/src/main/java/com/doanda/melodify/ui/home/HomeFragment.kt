@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.doanda.easymeal.ui.track.TrackAdapter
 import com.doanda.melodify.core.data.Resource
 import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.ui.ViewModelFactory

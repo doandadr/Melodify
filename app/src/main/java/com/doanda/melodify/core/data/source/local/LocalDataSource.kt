@@ -15,9 +15,9 @@ class LocalDataSource private constructor(private val trackDao: TrackDao) {
             }
     }
 
-    fun getAllTrack(): LiveData<List<TrackEntity>> = trackDao.getAllTracks()
+    fun getAllTracks(): LiveData<List<TrackEntity>> = trackDao.getAllTracks()
 
-    fun getFavoriteTrack(): LiveData<List<TrackEntity>> = trackDao.getFavoriteTracks()
+    fun getFavoriteTracks(): LiveData<List<TrackEntity>> = trackDao.getFavoriteTracks()
 
     fun insertTrack(trackList: List<TrackEntity>) = trackDao.insertTrack(trackList)
 

@@ -4,5 +4,5 @@ import androidx.lifecycle.ViewModel
 import com.doanda.melodify.core.data.TrackRepository
 
 class FavoriteViewModel(private val trackRepository: TrackRepository) : ViewModel() {
-    val favoriteTracks = trackRepository.getFavoriteTrack()
+    val favoriteTracks = trackRepository.getFavoriteTracks()
 }
