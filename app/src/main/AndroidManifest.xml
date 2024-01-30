@@ -17,7 +17,7 @@
         android:theme="@style/Theme.Melodify"
         tools:targetApi="31">
         <activity
-            android:name=".ui.detail.TrackActivity"
+            android:name=".ui.track.TrackActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
