@@ -3,11 +3,9 @@ package com.doanda.melodify.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.doanda.melodify.core.data.TrackRepository
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(trackRepository: TrackRepository) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    val tracks = trackRepository.getAllTrack()
 }
