@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.doanda.melodify.core.data.source.local.entity.TrackEntity
+import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.databinding.FragmentFavoriteBinding
 import com.doanda.melodify.ui.ViewModelFactory
 import com.doanda.melodify.ui.track.TrackActivity
@@ -35,7 +35,7 @@ class FavoriteFragment : Fragment() {
 
         favoriteAdapter = FavoriteAdapter()
         favoriteAdapter.setOnItemClickCallback(object : FavoriteAdapter.OnItemClickCallback {
-            override fun onItemClicked(track: TrackEntity) {
+            override fun onItemClicked(track: Track) {
                 launchTrackActivity(track)
             }
         })
@@ -44,7 +44,7 @@ class FavoriteFragment : Fragment() {
         observeFavoriteTracksData()
     }
 
-    private fun launchTrackActivity(track: TrackEntity) {
+    private fun launchTrackActivity(track: Track) {
         val intent = Intent(requireContext(), TrackActivity::class.java)
         intent.putExtra(TrackActivity.EXTRA_TRACK, track)
         startActivity(intent)

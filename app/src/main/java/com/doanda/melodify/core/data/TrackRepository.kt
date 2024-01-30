@@ -1,11 +1,12 @@
 package com.doanda.melodify.core.data
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.map
 import com.doanda.melodify.core.data.source.local.LocalDataSource
-import com.doanda.melodify.core.data.source.local.entity.TrackEntity
 import com.doanda.melodify.core.data.source.remote.RemoteDataSource
 import com.doanda.melodify.core.data.source.remote.network.ApiResponse
 import com.doanda.melodify.core.data.source.remote.response.TrackResponse
+import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.core.utils.AppExecutors
 import com.doanda.melodify.core.utils.DataMapper
 
@@ -29,13 +30,13 @@ class TrackRepository private constructor(
             }
     }
 
-    fun getAllTrack(): LiveData<Resource<List<TrackEntity>>> =
-        object : NetworkBoundResource<List<TrackEntity>, List<TrackResponse>>(appExecutors) {
-            override fun loadFromDB(): LiveData<List<TrackEntity>> {
-                return localDataSource.getAllTrack()
+    fun getAllTrack(): LiveData<Resource<List<Track>>> =
+        object : NetworkBoundResource<List<Track>, List<TrackResponse>>(appExecutors) {
+            override fun loadFromDB(): LiveData<List<Track>> {
+                return localDataSource.getAllTrack().map { DataMapper.mapEntitiesToDomain(it) }
             }
 
-            override fun shouldFetch(data: List<TrackEntity>?): Boolean =
+            override fun shouldFetch(data: List<Track>?): Boolean =
                 data == null || data.isEmpty()
 
             override fun createCall(): LiveData<ApiResponse<List<TrackResponse>>> =
@@ -47,12 +48,13 @@ class TrackRepository private constructor(
             }
         }.asLiveData()
 
-    fun getFavoriteTrack(): LiveData<List<TrackEntity>> {
-        return localDataSource.getFavoriteTrack()
+    fun getFavoriteTrack(): LiveData<List<Track>> {
+        return localDataSource.getFavoriteTrack().map { DataMapper.mapEntitiesToDomain(it) }
     }
 
-    fun setFavoriteTrack(track: TrackEntity, state: Boolean) {
-        appExecutors.diskIO().execute { localDataSource.setFavoriteTrack(track, state) }
+    fun setFavoriteTrack(track: Track, state: Boolean) {
+        val trackEntity = DataMapper.mapDomainToEntity(track)
+        appExecutors.diskIO().execute { localDataSource.setFavoriteTrack(trackEntity, state) }
     }
 }
 

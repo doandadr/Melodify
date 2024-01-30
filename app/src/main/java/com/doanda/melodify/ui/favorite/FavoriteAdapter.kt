@@ -6,16 +6,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.doanda.melodify.core.data.source.local.entity.TrackEntity
+import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.databinding.ItemFavoriteBinding
 
-class FavoriteAdapter : ListAdapter<TrackEntity, FavoriteAdapter.ViewHolder>(DIFF_CALLBACK)
+class FavoriteAdapter : ListAdapter<Track, FavoriteAdapter.ViewHolder>(DIFF_CALLBACK)
 {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     interface OnItemClickCallback {
-        fun onItemClicked(track: TrackEntity)
-//        fun onFavoriteClicked(track: TrackEntity)
+        fun onItemClicked(track: Track)
+//        fun onFavoriteClicked(track: Track)
     }
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -23,7 +23,7 @@ class FavoriteAdapter : ListAdapter<TrackEntity, FavoriteAdapter.ViewHolder>(DIF
     }
 
     inner class ViewHolder(val binding: ItemFavoriteBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(track: TrackEntity) {
+        fun bind(track: Track) {
             with(binding) {
                 tvItemFavoriteTitle.text = track.title
                 tvItemFavoriteArtist.text = track.artistName
@@ -51,11 +51,11 @@ class FavoriteAdapter : ListAdapter<TrackEntity, FavoriteAdapter.ViewHolder>(DIF
     }
 
     companion object {
-        val DIFF_CALLBACK: DiffUtil.ItemCallback<TrackEntity> = object : DiffUtil.ItemCallback<TrackEntity>() {
-            override fun areItemsTheSame(oldItem: TrackEntity, newItem: TrackEntity): Boolean {
+        val DIFF_CALLBACK: DiffUtil.ItemCallback<Track> = object : DiffUtil.ItemCallback<Track>() {
+            override fun areItemsTheSame(oldItem: Track, newItem: Track): Boolean {
                 return oldItem.id == newItem.id
             }
-            override fun areContentsTheSame(oldItem: TrackEntity, newItem: TrackEntity): Boolean {
+            override fun areContentsTheSame(oldItem: Track, newItem: Track): Boolean {
                 return oldItem == newItem
             }
         }

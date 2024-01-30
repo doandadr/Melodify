@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.doanda.melodify.R
-import com.doanda.melodify.core.data.source.local.entity.TrackEntity
+import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.databinding.ActivityTrackBinding
 import com.doanda.melodify.ui.ViewModelFactory
 
@@ -20,12 +20,12 @@ class TrackActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val track = intent.getParcelableExtra<TrackEntity>(EXTRA_TRACK)
+        val track = intent.getParcelableExtra<Track>(EXTRA_TRACK)
 
         if (track != null) displayTrackDetail(track)
     }
 
-    private fun displayTrackDetail(track: TrackEntity) {
+    private fun displayTrackDetail(track: Track) {
         binding.tvTrackTitle.text = track.title
         binding.tvTrackArtist.text = track.artistName
         binding.tvTrackLink.text = track.link

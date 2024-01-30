@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.doanda.easymeal.ui.track.TrackAdapter
 import com.doanda.melodify.core.data.Resource
-import com.doanda.melodify.core.data.source.local.entity.TrackEntity
+import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.ui.ViewModelFactory
 import com.doanda.melodify.databinding.FragmentHomeBinding
 import com.doanda.melodify.ui.track.TrackActivity
@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
 
         trackAdapter = TrackAdapter()
         trackAdapter.setOnItemClickCallback(object : TrackAdapter.OnItemClickCallback {
-            override fun onItemClicked(track: TrackEntity) {
+            override fun onItemClicked(track: Track) {
                 launchTrackActivity(track)
             }
         })
@@ -47,7 +47,7 @@ class HomeFragment : Fragment() {
 
     }
 
-    private fun launchTrackActivity(track: TrackEntity) {
+    private fun launchTrackActivity(track: Track) {
         val intent = Intent(requireContext(), TrackActivity::class.java)
         intent.putExtra(TrackActivity.EXTRA_TRACK, track)
         startActivity(intent)
