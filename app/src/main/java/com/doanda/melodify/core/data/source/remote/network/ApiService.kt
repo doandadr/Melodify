@@ -5,7 +5,6 @@ import retrofit2.Call
 import retrofit2.http.GET
 
 interface ApiService {
-
     @GET("chart")
-    fun getTracks(): Call<TracksResponse>
+    suspend fun getTracks(): TracksResponse
 }
