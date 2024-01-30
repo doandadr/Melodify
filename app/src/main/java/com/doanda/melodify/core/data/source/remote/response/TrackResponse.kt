@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 data class TrackResponse (
 
 
-  @SerializedName("id"                      ) var id                    : Int,
+  @SerializedName("id"                      ) var id                    : Long,
   @SerializedName("title"                   ) var title                 : String,
   @SerializedName("title_short"             ) var titleShort            : String,
   @SerializedName("title_version"           ) var titleVersion          : String,

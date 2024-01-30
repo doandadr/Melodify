@@ -10,7 +10,7 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "track")
 data class TrackEntity(
     @PrimaryKey
-    @ColumnInfo("id"                      ) val id                    : Int,
+    @ColumnInfo("id"                      ) val id                    : Long,
     @ColumnInfo("title"                   ) val title                 : String,
     @ColumnInfo("title_short"             ) val titleShort            : String,
     @ColumnInfo("title_version"           ) val titleVersion          : String,
