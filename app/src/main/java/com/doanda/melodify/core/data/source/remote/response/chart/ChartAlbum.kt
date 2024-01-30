@@ -2,35 +2,18 @@ package com.doanda.melodify.core.data.source.remote.response.chart
 
 import com.google.gson.annotations.SerializedName
 
-data class ChartAlbum(
 
-    @field:SerializedName("cover")
-    val cover: String,
+data class ChartAlbum (
 
-    @field:SerializedName("md5_image")
-    val md5Image: String,
+  @SerializedName("id"           ) var id          : Int?    = null,
+  @SerializedName("title"        ) var title       : String? = null,
+  @SerializedName("cover"        ) var cover       : String? = null,
+  @SerializedName("cover_small"  ) var coverSmall  : String? = null,
+  @SerializedName("cover_medium" ) var coverMedium : String? = null,
+  @SerializedName("cover_big"    ) var coverBig    : String? = null,
+  @SerializedName("cover_xl"     ) var coverXl     : String? = null,
+  @SerializedName("md5_image"    ) var md5Image    : String? = null,
+  @SerializedName("tracklist"    ) var tracklist   : String? = null,
+  @SerializedName("type"         ) var type        : String? = null
 
-    @field:SerializedName("tracklist")
-    val tracklist: String,
-
-    @field:SerializedName("cover_xl")
-    val coverXl: String,
-
-    @field:SerializedName("cover_medium")
-    val coverMedium: String,
-
-    @field:SerializedName("cover_small")
-    val coverSmall: String,
-
-    @field:SerializedName("id")
-    val id: Int,
-
-    @field:SerializedName("title")
-    val title: String,
-
-    @field:SerializedName("type")
-    val type: String,
-
-    @field:SerializedName("cover_big")
-    val coverBig: String
 )

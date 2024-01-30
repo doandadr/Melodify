@@ -2,11 +2,10 @@ package com.doanda.melodify.core.data.source.remote.response.chart
 
 import com.google.gson.annotations.SerializedName
 
-data class Tracks(
 
-    @field:SerializedName("total")
-    val total: Int,
+data class Tracks (
 
-    @field:SerializedName("data")
-    val data: List<TrackData>
+  @SerializedName("data"  ) var data  : ArrayList<TrackData> = arrayListOf(),
+  @SerializedName("total" ) var total : Int?            = null
+
 )

@@ -2,41 +2,20 @@ package com.doanda.melodify.core.data.source.remote.response.track
 
 import com.google.gson.annotations.SerializedName
 
-data class TrackArtist(
 
-    @field:SerializedName("picture_xl")
-    val pictureXl: String,
+data class TrackArtist (
 
-    @field:SerializedName("tracklist")
-    val tracklist: String,
+    @SerializedName("id"             ) var id            : String?  = null,
+    @SerializedName("name"           ) var name          : String?  = null,
+    @SerializedName("link"           ) var link          : String?  = null,
+    @SerializedName("share"          ) var share         : String?  = null,
+    @SerializedName("picture"        ) var picture       : String?  = null,
+    @SerializedName("picture_small"  ) var pictureSmall  : String?  = null,
+    @SerializedName("picture_medium" ) var pictureMedium : String?  = null,
+    @SerializedName("picture_big"    ) var pictureBig    : String?  = null,
+    @SerializedName("picture_xl"     ) var pictureXl     : String?  = null,
+    @SerializedName("radio"          ) var radio         : Boolean? = null,
+    @SerializedName("tracklist"      ) var tracklist     : String?  = null,
+    @SerializedName("type"           ) var type          : String?  = null
 
-    @field:SerializedName("picture_big")
-    val pictureBig: String,
-
-    @field:SerializedName("name")
-    val name: String,
-
-    @field:SerializedName("link")
-    val link: String,
-
-    @field:SerializedName("picture_small")
-    val pictureSmall: String,
-
-    @field:SerializedName("share")
-    val share: String,
-
-    @field:SerializedName("id")
-    val id: String,
-
-    @field:SerializedName("type")
-    val type: String,
-
-    @field:SerializedName("picture")
-    val picture: String,
-
-    @field:SerializedName("picture_medium")
-    val pictureMedium: String,
-
-    @field:SerializedName("radio")
-    val radio: Boolean
 )

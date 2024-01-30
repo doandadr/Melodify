@@ -2,53 +2,21 @@ package com.doanda.melodify.core.data.source.remote.response.chart
 
 import com.google.gson.annotations.SerializedName
 
-data class TrackData(
 
-    @field:SerializedName("preview")
-    val preview: String,
+data class TrackData (
 
-    @field:SerializedName("md5_image")
-    val md5Image: String,
+  @SerializedName("id"             ) var id            : Int?     = null,
+  @SerializedName("title"          ) var title         : String?  = null,
+  @SerializedName("description"    ) var description   : String?  = null,
+  @SerializedName("available"      ) var available     : Boolean? = null,
+  @SerializedName("fans"           ) var fans          : Int?     = null,
+  @SerializedName("link"           ) var link          : String?  = null,
+  @SerializedName("share"          ) var share         : String?  = null,
+  @SerializedName("picture"        ) var picture       : String?  = null,
+  @SerializedName("picture_small"  ) var pictureSmall  : String?  = null,
+  @SerializedName("picture_medium" ) var pictureMedium : String?  = null,
+  @SerializedName("picture_big"    ) var pictureBig    : String?  = null,
+  @SerializedName("picture_xl"     ) var pictureXl     : String?  = null,
+  @SerializedName("type"           ) var type          : String?  = null
 
-    @field:SerializedName("artist")
-    val artist: ChartArtist,
-
-    @field:SerializedName("album")
-    val album: ChartAlbum,
-
-    @field:SerializedName("link")
-    val link: String,
-
-    @field:SerializedName("explicit_content_cover")
-    val explicitContentCover: Int,
-
-    @field:SerializedName("title")
-    val title: String,
-
-    @field:SerializedName("title_version")
-    val titleVersion: String,
-
-    @field:SerializedName("explicit_lyrics")
-    val explicitLyrics: Boolean,
-
-    @field:SerializedName("type")
-    val type: String,
-
-    @field:SerializedName("title_short")
-    val titleShort: String,
-
-    @field:SerializedName("duration")
-    val duration: Int,
-
-    @field:SerializedName("rank")
-    val rank: Int,
-
-    @field:SerializedName("id")
-    val id: Int,
-
-    @field:SerializedName("explicit_content_lyrics")
-    val explicitContentLyrics: Int,
-
-    @field:SerializedName("position")
-    val position: Int
 )
