@@ -1,13 +1,13 @@
 package com.doanda.melodify.core.domain.repository
 
-import androidx.lifecycle.LiveData
 import com.doanda.melodify.core.data.Resource
 import com.doanda.melodify.core.domain.model.Track
+import kotlinx.coroutines.flow.Flow
 
 interface ITrackRepository {
-    fun getAllTracks(): LiveData<Resource<List<Track>>>
+    fun getAllTracks(): Flow<Resource<List<Track>>>
 
-    fun getFavoriteTracks(): LiveData<List<Track>>
+    fun getFavoriteTracks(): Flow<List<Track>>
 
     fun setFavoriteTrack(track: Track, state: Boolean)
 }

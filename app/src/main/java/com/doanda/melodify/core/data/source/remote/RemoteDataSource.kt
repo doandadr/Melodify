@@ -20,30 +20,6 @@ class RemoteDataSource private constructor(private val apiService: ApiService) {
             }
     }
 
-//    fun getAllTracks(): LiveData<ApiResponse<List<TrackResponse>>> {
-//        val resultData = MutableLiveData<ApiResponse<List<TrackResponse>>>()
-//
-//        //get data from remote api
-//        val client = apiService.getTracks()
-//
-//        client.enqueue(object : Callback<TracksResponse> {
-//            override fun onResponse(
-//                call: Call<TracksResponse>,
-//                response: Response<TracksResponse>
-//            ) {
-//                val dataArray = response.body()?.tracks?.data
-//                resultData.value = if (dataArray != null) ApiResponse.Success(dataArray) else ApiResponse.Empty
-//            }
-//
-//            override fun onFailure(call: Call<TracksResponse>, t: Throwable) {
-//                resultData.value = ApiResponse.Error(t.message.toString())
-//                Log.e("RemoteDataSource", t.message.toString())
-//            }
-//        })
-//
-//        return resultData
-//    }
-
     suspend fun getAllTracks(): Flow<ApiResponse<List<TrackResponse>>> {
         return flow {
             try {
