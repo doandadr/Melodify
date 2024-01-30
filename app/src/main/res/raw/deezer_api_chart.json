@@ -1,0 +1,47 @@
+{
+  "tracks": {
+    "data": [      {
+        "id": 2023385527,
+        "title": "Ain't No Liar",
+        "title_short": "Ain't No Liar",
+        "title_version": "1",
+        "link": "https://www.deezer.com/track/2023385527",
+        "duration": 127,
+        "rank": 527087,
+        "explicit_lyrics": false,
+        "explicit_content_lyrics": 0,
+        "explicit_content_cover": 0,
+        "preview": "https://cdns-preview-8.dzcdn.net/stream/c-8ae384fecf6383cfa878b89a0229f122-3.mp3",
+        "md5_image": "c0077b47ecb593b7d3639ca57fce28a8",
+        "position": 1,
+        "artist": {
+          "id": 190314217,
+          "name": "British Squad",
+          "link": "https://www.deezer.com/artist/190314217",
+          "picture": "https://api.deezer.com/artist/190314217/image",
+          "picture_small": "https://e-cdns-images.dzcdn.net/images/artist/c0077b47ecb593b7d3639ca57fce28a8/56x56-000000-80-0-0.jpg",
+          "picture_medium": "https://e-cdns-images.dzcdn.net/images/artist/c0077b47ecb593b7d3639ca57fce28a8/250x250-000000-80-0-0.jpg",
+          "picture_big": "https://e-cdns-images.dzcdn.net/images/artist/c0077b47ecb593b7d3639ca57fce28a8/500x500-000000-80-0-0.jpg",
+          "picture_xl": "https://e-cdns-images.dzcdn.net/images/artist/c0077b47ecb593b7d3639ca57fce28a8/1000x1000-000000-80-0-0.jpg",
+          "radio": true,
+          "tracklist": "https://api.deezer.com/artist/190314217/top?limit=50",
+          "type": "artist"
+        },
+        "album": {
+          "id": 377036017,
+          "title": "Ain't No Liar",
+          "cover": "https://api.deezer.com/album/377036017/image",
+          "cover_small": "https://e-cdns-images.dzcdn.net/images/cover/c0077b47ecb593b7d3639ca57fce28a8/56x56-000000-80-0-0.jpg",
+          "cover_medium": "https://e-cdns-images.dzcdn.net/images/cover/c0077b47ecb593b7d3639ca57fce28a8/250x250-000000-80-0-0.jpg",
+          "cover_big": "https://e-cdns-images.dzcdn.net/images/cover/c0077b47ecb593b7d3639ca57fce28a8/500x500-000000-80-0-0.jpg",
+          "cover_xl": "https://e-cdns-images.dzcdn.net/images/cover/c0077b47ecb593b7d3639ca57fce28a8/1000x1000-000000-80-0-0.jpg",
+          "md5_image": "c0077b47ecb593b7d3639ca57fce28a8",
+          "tracklist": "https://api.deezer.com/album/377036017/tracks",
+          "type": "album"
+        },
+        "type": "track"
+      }
+    ],
+    "total": 9
+  }
+}
