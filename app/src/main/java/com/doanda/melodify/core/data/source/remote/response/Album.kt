@@ -5,15 +5,15 @@ import com.google.gson.annotations.SerializedName
 
 data class Album (
 
-  @SerializedName("id"           ) var id          : Int?    = null,
-  @SerializedName("title"        ) var title       : String? = null,
-  @SerializedName("cover"        ) var cover       : String? = null,
-  @SerializedName("cover_small"  ) var coverSmall  : String? = null,
-  @SerializedName("cover_medium" ) var coverMedium : String? = null,
-  @SerializedName("cover_big"    ) var coverBig    : String? = null,
-  @SerializedName("cover_xl"     ) var coverXl     : String? = null,
-  @SerializedName("md5_image"    ) var md5Image    : String? = null,
-  @SerializedName("tracklist"    ) var tracklist   : String? = null,
-  @SerializedName("type"         ) var type        : String? = null
+  @SerializedName("id"           ) var id          : Int,
+  @SerializedName("title"        ) var title       : String,
+  @SerializedName("cover"        ) var cover       : String,
+  @SerializedName("cover_small"  ) var coverSmall  : String,
+  @SerializedName("cover_medium" ) var coverMedium : String,
+  @SerializedName("cover_big"    ) var coverBig    : String,
+  @SerializedName("cover_xl"     ) var coverXl     : String,
+  @SerializedName("md5_image"    ) var md5Image    : String,
+  @SerializedName("tracklist"    ) var tracklist   : String,
+  @SerializedName("type"         ) var type        : String
 
 )
