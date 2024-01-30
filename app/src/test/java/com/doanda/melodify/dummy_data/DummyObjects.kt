@@ -4,6 +4,7 @@ import com.doanda.melodify.core.data.source.local.entity.TrackEntity
 import com.doanda.melodify.core.data.source.remote.response.Album
 import com.doanda.melodify.core.data.source.remote.response.Artist
 import com.doanda.melodify.core.data.source.remote.response.TrackResponse
+import com.doanda.melodify.core.domain.model.Track
 
 val testArtist: Artist = Artist(
     id = 190314217,
@@ -72,4 +73,29 @@ val testTrackEntity: TrackEntity = TrackEntity(
     albumTitle = "Ain't No Liar",
     albumCover = "https://e-cdns-images.dzcdn.net/images/cover/c0077b47ecb593b7d3639ca57fce28a8/250x250-000000-80-0-0.jpg",
     type = "track",
+    isFavorite = false
+)
+
+val testTrack: Track = Track(
+    id = 2023385527,
+    title = "Ain't No Liar",
+    titleShort = "Ain't No Liar",
+    titleVersion = "1",
+    link = "https://www.deezer.com/track/2023385527",
+    duration = 127,
+    rank = 527087,
+    explicitLyrics = false,
+    explicitContentLyrics = 0,
+    explicitContentCover = 0,
+    preview = "https://cdns-preview-8.dzcdn.net/stream/c-8ae384fecf6383cfa878b89a0229f122-3.mp3",
+    md5Image = "c0077b47ecb593b7d3639ca57fce28a8",
+    position = 1,
+    artistId = 190314217,
+    artistName = "British Squad",
+    artistPicture = "https://e-cdns-images.dzcdn.net/images/artist/c0077b47ecb593b7d3639ca57fce28a8/250x250-000000-80-0-0.jpg",
+    albumId = 377036017,
+    albumTitle = "Ain't No Liar",
+    albumCover = "https://e-cdns-images.dzcdn.net/images/cover/c0077b47ecb593b7d3639ca57fce28a8/250x250-000000-80-0-0.jpg",
+    type = "track",
+    isFavorite = false,
 )
