@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName
 
 data class TracksData (
 
-    @SerializedName("data"  ) var data  : ArrayList<TrackResponse> = arrayListOf(),
-    @SerializedName("total" ) var total : Int?            = null
-
+    @SerializedName("data"  ) var data  : List<TrackResponse>,
+    @SerializedName("total" ) var total : Int
 )
