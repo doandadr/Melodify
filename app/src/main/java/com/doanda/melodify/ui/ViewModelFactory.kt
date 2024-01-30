@@ -5,11 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.doanda.melodify.core.data.TrackRepository
 import com.doanda.melodify.core.di.Injection
+import com.doanda.melodify.core.domain.usecase.TrackUseCase
 import com.doanda.melodify.ui.favorite.FavoriteViewModel
 import com.doanda.melodify.ui.home.HomeViewModel
 import com.doanda.melodify.ui.track.TrackViewModel
 
-class ViewModelFactory private constructor(private val trackRepository: TrackRepository) :
+class ViewModelFactory private constructor(private val trackUseCase: TrackUseCase) :
     ViewModelProvider.NewInstanceFactory() {
 
     companion object {
@@ -19,27 +20,28 @@ class ViewModelFactory private constructor(private val trackRepository: TrackRep
         fun getInstance(context: Context): ViewModelFactory =
             instance
                 ?: synchronized(this) {
-                instance
-                    ?: ViewModelFactory(
-                        Injection.provideRepository(
-                            context
+                    instance
+                        ?: ViewModelFactory(
+                            Injection.provideTrackUseCase(context)
                         )
-                    )
-            }
+                }
     }
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T =
         when {
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
-                HomeViewModel(trackRepository) as T
+                HomeViewModel(trackUseCase) as T
             }
+
             modelClass.isAssignableFrom(FavoriteViewModel::class.java) -> {
-                FavoriteViewModel(trackRepository) as T
+                FavoriteViewModel(trackUseCase) as T
             }
+
             modelClass.isAssignableFrom(TrackViewModel::class.java) -> {
-                TrackViewModel(trackRepository) as T
+                TrackViewModel(trackUseCase) as T
             }
+
             else -> throw Throwable("Unknown ViewModel class: " + modelClass.name)
         }
 }

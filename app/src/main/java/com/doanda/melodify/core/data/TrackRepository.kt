@@ -7,6 +7,7 @@ import com.doanda.melodify.core.data.source.remote.RemoteDataSource
 import com.doanda.melodify.core.data.source.remote.network.ApiResponse
 import com.doanda.melodify.core.data.source.remote.response.TrackResponse
 import com.doanda.melodify.core.domain.model.Track
+import com.doanda.melodify.core.domain.repository.ITrackRepository
 import com.doanda.melodify.core.utils.AppExecutors
 import com.doanda.melodify.core.utils.DataMapper
 
@@ -14,7 +15,7 @@ class TrackRepository private constructor(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
-) {
+) : ITrackRepository{
 
     companion object {
         @Volatile
@@ -30,7 +31,7 @@ class TrackRepository private constructor(
             }
     }
 
-    fun getAllTracks(): LiveData<Resource<List<Track>>> =
+    override fun getAllTracks(): LiveData<Resource<List<Track>>> =
         object : NetworkBoundResource<List<Track>, List<TrackResponse>>(appExecutors) {
             override fun loadFromDB(): LiveData<List<Track>> {
                 return localDataSource.getAllTracks().map { DataMapper.mapEntitiesToDomain(it) }
@@ -48,11 +49,11 @@ class TrackRepository private constructor(
             }
         }.asLiveData()
 
-    fun getFavoriteTracks(): LiveData<List<Track>> {
+    override fun getFavoriteTracks(): LiveData<List<Track>> {
         return localDataSource.getFavoriteTracks().map { DataMapper.mapEntitiesToDomain(it) }
     }
 
-    fun setFavoriteTrack(track: Track, state: Boolean) {
+    override fun setFavoriteTrack(track: Track, state: Boolean) {
         val trackEntity = DataMapper.mapDomainToEntity(track)
         appExecutors.diskIO().execute { localDataSource.setFavoriteTrack(trackEntity, state) }
     }

@@ -2,8 +2,9 @@ package com.doanda.melodify.ui.home
 
 import androidx.lifecycle.ViewModel
 import com.doanda.melodify.core.data.TrackRepository
+import com.doanda.melodify.core.domain.usecase.TrackUseCase
 
-class HomeViewModel(private val trackRepository: TrackRepository) : ViewModel() {
+class HomeViewModel(trackUseCase: TrackUseCase) : ViewModel() {
 
-    val tracks = trackRepository.getAllTracks()
+    val tracks = trackUseCase.getAllTracks()
 }
