@@ -52,6 +52,11 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
 
+    // MATERIAL 3
+    implementation("androidx.compose.material3:material3-window-size-class:1.1.2")
+    implementation("androidx.compose.material3:material3:1.1.2")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+
     // NAVIGATION
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.6")
@@ -64,13 +69,16 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
+    // COROUTINES
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+
     // ROOM
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.room:room-paging:2.6.1")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     testImplementation("junit:junit:4.12")
     ksp("androidx.room:room-compiler:2.6.1")
-
 
     // DATASTORE
     implementation("androidx.datastore:datastore-preferences:1.0.0")
@@ -83,11 +91,6 @@ dependencies {
     // VIEWPAGER
     implementation("androidx.viewpager2:viewpager2:1.0.0")
 
-    // MATERIAL 3
-    implementation("androidx.compose.material3:material3-window-size-class:1.1.2")
-    implementation("androidx.compose.material3:material3:1.1.2")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
-
     // RECYCLER VIEW
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
 
@@ -97,5 +100,4 @@ dependencies {
     testImplementation("org.mockito:mockito-inline:4.4.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-
 }
