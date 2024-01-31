@@ -48,8 +48,8 @@ dependencies {
 
     // GENERAL
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     // KOTLIN
     implementation("androidx.core:core-ktx:1.12.0")
@@ -59,9 +59,9 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.6.2")
 
     // MATERIAL 3
+    implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.compose.material3:material3-window-size-class:1.1.2")
     implementation("androidx.compose.material3:material3:1.1.2")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
 
     // GLIDE
     implementation("com.github.bumptech.glide:glide:4.15.1")
