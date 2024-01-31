@@ -3,14 +3,16 @@ package com.doanda.melodify.ui
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.doanda.melodify.core.data.TrackRepository
 import com.doanda.melodify.core.di.Injection
 import com.doanda.melodify.core.domain.usecase.TrackUseCase
+import com.doanda.melodify.di.AppScope
 import com.doanda.melodify.ui.favorite.FavoriteViewModel
 import com.doanda.melodify.ui.home.HomeViewModel
 import com.doanda.melodify.ui.track.TrackViewModel
+import javax.inject.Inject
 
-class ViewModelFactory private constructor(private val trackUseCase: TrackUseCase) :
+@AppScope
+class ViewModelFactory @Inject constructor(private val trackUseCase: TrackUseCase) :
     ViewModelProvider.NewInstanceFactory() {
 
     companion object {
