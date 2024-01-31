@@ -1,9 +1,7 @@
 package com.doanda.melodify.ui
 
-import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.doanda.melodify.core.di.Injection
 import com.doanda.melodify.core.domain.usecase.TrackUseCase
 import com.doanda.melodify.di.AppScope
 import com.doanda.melodify.ui.favorite.FavoriteViewModel
@@ -14,20 +12,6 @@ import javax.inject.Inject
 @AppScope
 class ViewModelFactory @Inject constructor(private val trackUseCase: TrackUseCase) :
     ViewModelProvider.NewInstanceFactory() {
-
-    companion object {
-        @Volatile
-        private var instance: ViewModelFactory? = null
-
-        fun getInstance(context: Context): ViewModelFactory =
-            instance
-                ?: synchronized(this) {
-                    instance
-                        ?: ViewModelFactory(
-                            Injection.provideTrackUseCase(context)
-                        )
-                }
-    }
 
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T =

@@ -9,15 +9,6 @@ import javax.inject.Singleton
 @Singleton
 class LocalDataSource @Inject constructor(private val trackDao: TrackDao) {
 
-    companion object {
-        private var instance: LocalDataSource? = null
-
-        fun getInstance(trackDao: TrackDao): LocalDataSource =
-            instance ?: synchronized(this) {
-                instance ?: LocalDataSource(trackDao)
-            }
-    }
-
     fun getAllTracks(): Flow<List<TrackEntity>> = trackDao.getAllTracks()
 
     fun getFavoriteTracks(): Flow<List<TrackEntity>> = trackDao.getFavoriteTracks()
