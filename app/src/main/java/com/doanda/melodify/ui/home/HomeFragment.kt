@@ -10,8 +10,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.doanda.melodify.core.data.Resource
 import com.doanda.melodify.core.domain.model.Track
+import com.doanda.melodify.core.ui.TrackAdapter
 import com.doanda.melodify.databinding.FragmentHomeBinding
 import com.doanda.melodify.ui.track.TrackActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -68,12 +68,12 @@ class HomeFragment : Fragment() {
     private fun observeTrackData() {
         homeViewModel.tracks.observe(viewLifecycleOwner) { result ->
             when (result) {
-                is Resource.Loading -> showLoading(true)
-                is Resource.Success -> {
+                is com.doanda.melodify.core.data.Resource.Loading -> showLoading(true)
+                is com.doanda.melodify.core.data.Resource.Success -> {
                     showLoading(false)
                     trackAdapter.submitList(result.data)
                 }
-                is Resource.Error -> {
+                is com.doanda.melodify.core.data.Resource.Error -> {
                     showLoading(false)
                     val description = "Failed to connect to network :("
                     Log.e("Home", result.message + description)
