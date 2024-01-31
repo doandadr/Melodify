@@ -1,10 +1,8 @@
 plugins {
     id("com.android.application")
-    id("com.google.devtools.ksp")
-    id("org.jetbrains.kotlin.android")
     id("kotlin-android")
     id("kotlin-parcelize")
-    id("androidx.navigation.safeargs")
+    id("kotlin-kapt")
 }
 
 android {
@@ -89,9 +87,7 @@ dependencies {
     // ROOM
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.room:room-paging:2.6.1")
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
-    testImplementation("junit:junit:4.12")
-    ksp("androidx.room:room-compiler:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
 
     // DATASTORE
     implementation("androidx.datastore:datastore-preferences:1.0.0")
@@ -100,10 +96,11 @@ dependencies {
 
     // DAGGER
     implementation("com.google.dagger:dagger:2.29.1")
-    ksp("com.google.dagger:dagger-compiler:2.29.1")
+    kapt("com.google.dagger:dagger-compiler:2.29.1")
 
     // TEST
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
     testImplementation("org.mockito:mockito-core:4.4.0")
     testImplementation("org.mockito:mockito-inline:4.4.0")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
