@@ -1,4 +1,4 @@
-package com.doanda.melodify.ui.home
+package com.doanda.melodify.core.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.doanda.melodify.core.databinding.ItemTrackBinding
 import com.doanda.melodify.core.domain.model.Track
-import com.doanda.melodify.databinding.ItemTrackBinding
 
 class TrackAdapter : ListAdapter<Track, TrackAdapter.ViewHolder>(DIFF_CALLBACK)
 {
