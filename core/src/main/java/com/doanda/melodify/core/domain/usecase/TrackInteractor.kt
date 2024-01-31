@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class TrackInteractor @Inject constructor(private val trackRepository: ITrackRepository ): TrackUseCase {
 
-    override fun getAllTracks(): Flow<Resource<List<Track>>> = trackRepository.getAllTracks()
+    override fun getAllTracks(): Flow<com.doanda.melodify.core.data.Resource<List<Track>>> = trackRepository.getAllTracks()
 
     override fun getFavoriteTracks(): Flow<List<Track>> = trackRepository.getFavoriteTracks()
 

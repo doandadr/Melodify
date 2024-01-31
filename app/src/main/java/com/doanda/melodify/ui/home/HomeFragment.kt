@@ -68,12 +68,12 @@ class HomeFragment : Fragment() {
     private fun observeTrackData() {
         homeViewModel.tracks.observe(viewLifecycleOwner) { result ->
             when (result) {
-                is Resource.Loading -> showLoading(true)
-                is Resource.Success -> {
+                is com.doanda.melodify.core.data.Resource.Loading -> showLoading(true)
+                is com.doanda.melodify.core.data.Resource.Success -> {
                     showLoading(false)
                     trackAdapter.submitList(result.data)
                 }
-                is Resource.Error -> {
+                is com.doanda.melodify.core.data.Resource.Error -> {
                     showLoading(false)
                     val description = "Failed to connect to network :("
                     Log.e("Home", result.message + description)

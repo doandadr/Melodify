@@ -20,8 +20,8 @@ class TrackRepository @Inject constructor(
     private val appExecutors: AppExecutors
 ) : ITrackRepository{
 
-    override fun getAllTracks(): Flow<Resource<List<Track>>> =
-        object : NetworkBoundResource<List<Track>, List<TrackResponse>>(appExecutors) {
+    override fun getAllTracks(): Flow<com.doanda.melodify.core.data.Resource<List<Track>>> =
+        object : com.doanda.melodify.core.data.NetworkBoundResource<List<Track>, List<TrackResponse>>(appExecutors) {
             override fun loadFromDB(): Flow<List<Track>> {
                 return localDataSource.getAllTracks().map { DataMapper.mapEntitiesToDomain(it) }
             }
