@@ -2,31 +2,32 @@ package com.doanda.melodify.ui.favorite
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.databinding.FragmentFavoriteBinding
-import com.doanda.melodify.ui.ViewModelFactory
 import com.doanda.melodify.ui.track.TrackActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
-    private val binding by lazy { FragmentFavoriteBinding.inflate(layoutInflater) }
-    private val viewModel by viewModels<FavoriteViewModel> {
-        ViewModelFactory.getInstance(
-            requireContext()
-        )
-    }
+//    private val binding by lazy { FragmentFavoriteBinding.inflate(layoutInflater) }
+    private var _binding: FragmentFavoriteBinding? = null
+    private val binding get() = _binding!!
+
+    private val favoriteViewModel: FavoriteViewModel by viewModels()
 
     private lateinit var favoriteAdapter: FavoriteAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -59,7 +60,7 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun observeFavoriteTracksData() {
-        viewModel.favoriteTracks.observe(viewLifecycleOwner) { trackList ->
+        favoriteViewModel.favoriteTracks.observe(viewLifecycleOwner) { trackList ->
             if (trackList.isNullOrEmpty()) {
                 showEmpty(true)
             } else {

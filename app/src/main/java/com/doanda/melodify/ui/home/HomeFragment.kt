@@ -12,14 +12,18 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.doanda.melodify.core.data.Resource
 import com.doanda.melodify.core.domain.model.Track
-import com.doanda.melodify.ui.ViewModelFactory
 import com.doanda.melodify.databinding.FragmentHomeBinding
 import com.doanda.melodify.ui.track.TrackActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
-    private val viewModel by viewModels<HomeViewModel> { ViewModelFactory.getInstance(requireContext()) }
+//    private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+
+    private val homeViewModel: HomeViewModel by viewModels()
 
     private lateinit var trackAdapter: TrackAdapter
 
@@ -28,6 +32,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -61,7 +66,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeTrackData() {
-        viewModel.tracks.observe(viewLifecycleOwner) { result ->
+        homeViewModel.tracks.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Resource.Loading -> showLoading(true)
                 is Resource.Success -> {
