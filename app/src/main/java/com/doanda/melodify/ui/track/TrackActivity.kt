@@ -1,23 +1,26 @@
 package com.doanda.melodify.ui.track
 
-import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Parcelable
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.doanda.melodify.R
 import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.databinding.ActivityTrackBinding
 import com.doanda.melodify.ui.ViewModelFactory
+import javax.inject.Inject
 
 class TrackActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityTrackBinding.inflate(layoutInflater) }
-    private val viewModel by viewModels<TrackViewModel> { ViewModelFactory.getInstance(this) }
+
+    @Inject
+    lateinit var factory: ViewModelFactory
+    private val viewModel: TrackViewModel by viewModels { factory }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
