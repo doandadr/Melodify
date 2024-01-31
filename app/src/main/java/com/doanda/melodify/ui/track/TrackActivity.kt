@@ -15,13 +15,15 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class TrackActivity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityTrackBinding.inflate(layoutInflater) }
+//    private val binding by lazy { ActivityTrackBinding.inflate(layoutInflater) }
+    private lateinit var binding: ActivityTrackBinding
 
-    private val viewModel: TrackViewModel by viewModels()
+    private val trackViewModel: TrackViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityTrackBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val track: Track?
@@ -46,7 +48,7 @@ class TrackActivity : AppCompatActivity() {
         setStatusFavorite(statusFavorite)
         binding.btnFavorite.setOnClickListener {
             statusFavorite = !statusFavorite
-            viewModel.setFavoriteTrack(track, statusFavorite)
+            trackViewModel.setFavoriteTrack(track, statusFavorite)
             setStatusFavorite(statusFavorite)
         }
     }

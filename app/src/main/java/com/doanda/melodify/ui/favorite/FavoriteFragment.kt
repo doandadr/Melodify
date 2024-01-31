@@ -16,15 +16,18 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
-    private val binding by lazy { FragmentFavoriteBinding.inflate(layoutInflater) }
+//    private val binding by lazy { FragmentFavoriteBinding.inflate(layoutInflater) }
+    private var _binding: FragmentFavoriteBinding? = null
+    private val binding get() = _binding!!
 
-    private val viewModel: FavoriteViewModel by viewModels()
+    private val favoriteViewModel: FavoriteViewModel by viewModels()
 
     private lateinit var favoriteAdapter: FavoriteAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -57,7 +60,7 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun observeFavoriteTracksData() {
-        viewModel.favoriteTracks.observe(viewLifecycleOwner) { trackList ->
+        favoriteViewModel.favoriteTracks.observe(viewLifecycleOwner) { trackList ->
             if (trackList.isNullOrEmpty()) {
                 showEmpty(true)
             } else {

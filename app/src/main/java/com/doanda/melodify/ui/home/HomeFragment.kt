@@ -19,9 +19,11 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
 
-    private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
+//    private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
-    private val viewModel: HomeViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModels()
 
     private lateinit var trackAdapter: TrackAdapter
 
@@ -30,6 +32,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -63,7 +66,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun observeTrackData() {
-        viewModel.tracks.observe(viewLifecycleOwner) { result ->
+        homeViewModel.tracks.observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Resource.Loading -> showLoading(true)
                 is Resource.Success -> {
