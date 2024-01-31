@@ -1,7 +1,6 @@
-package com.doanda.melodify.core.utils
+package com.doanda.melodify.core.di
 
 import android.content.Context
-import com.doanda.melodify.core.di.RepositoryModule
 import com.doanda.melodify.core.domain.repository.ITrackRepository
 import dagger.BindsInstance
 import dagger.Component

@@ -14,6 +14,16 @@ import javax.inject.Singleton
 @Singleton
 class RemoteDataSource @Inject constructor(private val apiService: ApiService) {
 
+    companion object {
+        @Volatile
+        private var instance: RemoteDataSource? = null
+
+        fun getInstance(service: ApiService): RemoteDataSource =
+            instance ?: synchronized(this) {
+                instance ?: RemoteDataSource(service)
+            }
+    }
+
     suspend fun getAllTracks(): Flow<ApiResponse<List<TrackResponse>>> {
         return flow {
             try {

@@ -20,6 +20,20 @@ class TrackRepository @Inject constructor(
     private val appExecutors: AppExecutors
 ) : ITrackRepository{
 
+    companion object {
+        @Volatile
+        private var instance: TrackRepository? = null
+
+        fun getInstance(
+            remoteData: RemoteDataSource,
+            localData: LocalDataSource,
+            appExecutors: AppExecutors
+        ): TrackRepository =
+            instance ?: synchronized(this) {
+                instance ?: TrackRepository(remoteData, localData, appExecutors)
+            }
+    }
+
     override fun getAllTracks(): Flow<Resource<List<Track>>> =
         object : NetworkBoundResource<List<Track>, List<TrackResponse>>(appExecutors) {
             override fun loadFromDB(): Flow<List<Track>> {
