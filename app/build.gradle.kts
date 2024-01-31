@@ -16,6 +16,7 @@ android {
         minSdk = 24
         targetSdk = 34
         versionCode = 1
+
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -96,9 +97,11 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences-core:1.0.0")
     implementation("androidx.datastore:datastore-core:1.0.0")
 
-    // DAGGER
+    // DAGGER HILT
     implementation("com.google.dagger:dagger:2.44")
     ksp("com.google.dagger:dagger-compiler:2.44")
+    implementation("com.google.dagger:hilt-android:2.44")
+    ksp("com.google.dagger:hilt-android-compiler:2.44")
 
     // TEST
     testImplementation("junit:junit:4.13.2")
