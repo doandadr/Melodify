@@ -1,4 +1,4 @@
-package com.doanda.melodify.ui.favorite
+package com.doanda.melodify.favorite.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

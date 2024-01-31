@@ -15,4 +15,5 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.9.22" apply false
     id("com.android.application") version "8.2.1" apply false
     id ("com.google.dagger.hilt.android") version "2.50" apply false
+    id("com.android.dynamic-feature") version "8.2.1" apply false
 }

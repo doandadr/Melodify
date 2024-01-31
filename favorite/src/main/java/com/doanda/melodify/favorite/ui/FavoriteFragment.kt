@@ -1,4 +1,4 @@
-package com.doanda.melodify.ui.favorite
+package com.doanda.melodify.favorite.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,7 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.doanda.melodify.core.domain.model.Track
-import com.doanda.melodify.databinding.FragmentFavoriteBinding
+import com.doanda.melodify.core.ui.FavoriteAdapter
+import com.doanda.melodify.favorite.databinding.FragmentFavoriteBinding
 import com.doanda.melodify.ui.track.TrackActivity
 import dagger.hilt.android.AndroidEntryPoint
 

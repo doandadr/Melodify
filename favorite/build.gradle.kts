@@ -1,5 +1,5 @@
 plugins {
-    id("com.android.application")
+    id("com.android.dynamic-feature")
     id("org.jetbrains.kotlin.android")
     id("kotlin-android")
     id("kotlin-parcelize")
@@ -10,20 +10,20 @@ plugins {
 apply(from = "../shared_dependencies.gradle")
 
 android {
-    namespace = "com.doanda.melodify"
+    namespace = "com.doanda.melodify.favorite"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.doanda.melodify"
         minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-
-        versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -33,24 +33,14 @@ android {
             )
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-    }
     buildFeatures {
         viewBinding = true
     }
-    dynamicFeatures += setOf(":favorite")
 }
 
 dependencies {
+    implementation(project(":app"))
     implementation(project(":core"))
-    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22")
-
     // GENERAL
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
