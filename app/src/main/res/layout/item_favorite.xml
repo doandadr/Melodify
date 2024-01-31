@@ -2,7 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cardTrack"
+    android:id="@+id/cardFavorite"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="16dp">
@@ -14,7 +14,7 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/iv_item_track_cover"
+            android:id="@+id/iv_item_favorite_cover"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="1:1"
@@ -23,37 +23,37 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/tv_item_track_title"
+            android:id="@+id/tv_item_favorite_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_item_track_cover"
+            app:layout_constraintStart_toEndOf="@+id/iv_item_favorite_cover"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_item_track_artist"
+            android:id="@+id/tv_item_favorite_artist"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_item_track_cover"
-            app:layout_constraintTop_toBottomOf="@+id/tv_item_track_title" />
+            app:layout_constraintStart_toEndOf="@+id/iv_item_favorite_cover"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_favorite_title" />
 
         <TextView
-            android:id="@+id/tv_item_track_duration"
+            android:id="@+id/tv_item_favorite_duration"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/iv_item_track_cover"
-            app:layout_constraintTop_toBottomOf="@+id/tv_item_track_artist" />
+            app:layout_constraintStart_toEndOf="@+id/iv_item_favorite_cover"
+            app:layout_constraintTop_toBottomOf="@+id/tv_item_favorite_artist" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

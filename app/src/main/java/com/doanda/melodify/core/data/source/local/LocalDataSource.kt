@@ -1,25 +1,19 @@
 package com.doanda.melodify.core.data.source.local
 
-import androidx.lifecycle.LiveData
 import com.doanda.melodify.core.data.source.local.entity.TrackEntity
 import com.doanda.melodify.core.data.source.local.room.TrackDao
+import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class LocalDataSource private constructor(private val trackDao: TrackDao) {
+@Singleton
+class LocalDataSource @Inject constructor(private val trackDao: TrackDao) {
 
-    companion object {
-        private var instance: LocalDataSource? = null
+    fun getAllTracks(): Flow<List<TrackEntity>> = trackDao.getAllTracks()
 
-        fun getInstance(trackDao: TrackDao): LocalDataSource =
-            instance ?: synchronized(this) {
-                instance ?: LocalDataSource(trackDao)
-            }
-    }
+    fun getFavoriteTracks(): Flow<List<TrackEntity>> = trackDao.getFavoriteTracks()
 
-    fun getAllTrack(): LiveData<List<TrackEntity>> = trackDao.getAllTracks()
-
-    fun getFavoriteTrack(): LiveData<List<TrackEntity>> = trackDao.getFavoriteTracks()
-
-    fun insertTrack(trackList: List<TrackEntity>) = trackDao.insertTrack(trackList)
+    suspend fun insertTrack(trackList: List<TrackEntity>) = trackDao.insertTrack(trackList)
 
     fun setFavoriteTrack(track: TrackEntity, newState: Boolean) {
         track.isFavorite = newState

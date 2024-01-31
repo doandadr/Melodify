@@ -5,18 +5,22 @@ import com.google.gson.annotations.SerializedName
 
 data class TrackResponse (
 
-  @SerializedName("id"             ) var id            : Int,
-  @SerializedName("title"          ) var title         : String?  = null,
-  @SerializedName("description"    ) var description   : String?  = null,
-  @SerializedName("available"      ) var available     : Boolean? = null,
-  @SerializedName("fans"           ) var fans          : Int?     = null,
-  @SerializedName("link"           ) var link          : String?  = null,
-  @SerializedName("share"          ) var share         : String?  = null,
-  @SerializedName("picture"        ) var picture       : String?  = null,
-  @SerializedName("picture_small"  ) var pictureSmall  : String?  = null,
-  @SerializedName("picture_medium" ) var pictureMedium : String?  = null,
-  @SerializedName("picture_big"    ) var pictureBig    : String?  = null,
-  @SerializedName("picture_xl"     ) var pictureXl     : String?  = null,
-  @SerializedName("type"           ) var type          : String?  = null
+
+  @SerializedName("id"                      ) var id                    : Long,
+  @SerializedName("title"                   ) var title                 : String,
+  @SerializedName("title_short"             ) var titleShort            : String,
+  @SerializedName("title_version"           ) var titleVersion          : String,
+  @SerializedName("link"                    ) var link                  : String,
+  @SerializedName("duration"                ) var duration              : Int,
+  @SerializedName("rank"                    ) var rank                  : Int,
+  @SerializedName("explicit_lyrics"         ) var explicitLyrics        : Boolean,
+  @SerializedName("explicit_content_lyrics" ) var explicitContentLyrics : Int,
+  @SerializedName("explicit_content_cover"  ) var explicitContentCover  : Int,
+  @SerializedName("preview"                 ) var preview               : String,
+  @SerializedName("md5_image"               ) var md5Image              : String,
+  @SerializedName("position"                ) var position              : Int,
+  @SerializedName("artist"                  ) var artist                : Artist,
+  @SerializedName("album"                   ) var album                 : Album,
+  @SerializedName("type"                    ) var type                  : String
 
 )

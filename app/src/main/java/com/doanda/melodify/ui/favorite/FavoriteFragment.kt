@@ -1,32 +1,75 @@
 package com.doanda.melodify.ui.favorite
 
-import androidx.lifecycle.ViewModelProvider
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.doanda.melodify.R
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.doanda.melodify.core.domain.model.Track
+import com.doanda.melodify.databinding.FragmentFavoriteBinding
+import com.doanda.melodify.ui.track.TrackActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = FavoriteFragment()
-    }
+//    private val binding by lazy { FragmentFavoriteBinding.inflate(layoutInflater) }
+    private var _binding: FragmentFavoriteBinding? = null
+    private val binding get() = _binding!!
 
-    private lateinit var viewModel: FavoriteViewModel
+    private val favoriteViewModel: FavoriteViewModel by viewModels()
+
+    private lateinit var favoriteAdapter: FavoriteAdapter
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_favorite, container, false)
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(FavoriteViewModel::class.java)
-        // TODO: Use the ViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        favoriteAdapter = FavoriteAdapter()
+        favoriteAdapter.setOnItemClickCallback(object : FavoriteAdapter.OnItemClickCallback {
+            override fun onItemClicked(track: Track) {
+                launchTrackActivity(track)
+            }
+        })
+
+        setupRecyclerView()
+        observeFavoriteTracksData()
     }
 
+    private fun launchTrackActivity(track: Track) {
+        val intent = Intent(requireContext(), TrackActivity::class.java)
+        intent.putExtra(TrackActivity.EXTRA_TRACK, track)
+        startActivity(intent)
+    }
+
+    private fun setupRecyclerView() {
+        binding.rvFavoriteTracks.apply {
+            layoutManager = LinearLayoutManager(context)
+            setHasFixedSize(true)
+            adapter = favoriteAdapter
+        }
+    }
+
+    private fun observeFavoriteTracksData() {
+        favoriteViewModel.favoriteTracks.observe(viewLifecycleOwner) { trackList ->
+            if (trackList.isNullOrEmpty()) {
+                showEmpty(true)
+            } else {
+                favoriteAdapter.submitList(trackList)
+            }
+        }
+    }
+
+    private fun showEmpty(isEmpty: Boolean) {
+        if (isEmpty) binding.tvFavorite.text = "No Data"
+    }
 }
