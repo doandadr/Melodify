@@ -7,6 +7,7 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("androidx.navigation.safeargs")
 }
+apply(from = "../shared_dependencies.gradle")
 
 android {
     namespace = "com.doanda.melodify"
@@ -45,6 +46,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":core"))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22")
 
     // GENERAL
     implementation("androidx.appcompat:appcompat:1.6.1")
