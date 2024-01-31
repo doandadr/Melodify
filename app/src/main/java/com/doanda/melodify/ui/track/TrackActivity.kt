@@ -10,16 +10,14 @@ import com.bumptech.glide.Glide
 import com.doanda.melodify.R
 import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.databinding.ActivityTrackBinding
-import com.doanda.melodify.ui.ViewModelFactory
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TrackActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityTrackBinding.inflate(layoutInflater) }
 
-    @Inject
-    lateinit var factory: ViewModelFactory
-    private val viewModel: TrackViewModel by viewModels { factory }
+    private val viewModel: TrackViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
