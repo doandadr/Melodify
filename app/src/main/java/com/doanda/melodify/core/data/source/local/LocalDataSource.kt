@@ -3,8 +3,11 @@ package com.doanda.melodify.core.data.source.local
 import com.doanda.melodify.core.data.source.local.entity.TrackEntity
 import com.doanda.melodify.core.data.source.local.room.TrackDao
 import kotlinx.coroutines.flow.Flow
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class LocalDataSource private constructor(private val trackDao: TrackDao) {
+@Singleton
+class LocalDataSource @Inject constructor(private val trackDao: TrackDao) {
 
     companion object {
         private var instance: LocalDataSource? = null
