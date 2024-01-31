@@ -1,9 +1,10 @@
 plugins {
     id("com.android.application")
-    id("com.google.devtools.ksp")
     id("org.jetbrains.kotlin.android")
     id("kotlin-android")
     id("kotlin-parcelize")
+    id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
     id("androidx.navigation.safeargs")
 }
 
@@ -16,6 +17,7 @@ android {
         minSdk = 24
         targetSdk = 34
         versionCode = 1
+
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -89,16 +91,18 @@ dependencies {
     // ROOM
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("androidx.room:room-paging:2.6.1")
-    ksp("androidx.room:room-compiler:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
 
     // DATASTORE
     implementation("androidx.datastore:datastore-preferences:1.0.0")
     implementation("androidx.datastore:datastore-preferences-core:1.0.0")
     implementation("androidx.datastore:datastore-core:1.0.0")
 
-    // DAGGER
-    implementation("com.google.dagger:dagger:2.44")
-    ksp("com.google.dagger:dagger-compiler:2.44")
+    // DAGGER HILT
+    implementation("com.google.dagger:dagger:2.50")
+    kapt("com.google.dagger:dagger-compiler:2.50")
+    implementation("com.google.dagger:hilt-android:2.50")
+    kapt("com.google.dagger:hilt-android-compiler:2.50")
 
     // TEST
     testImplementation("junit:junit:4.13.2")

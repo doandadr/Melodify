@@ -10,20 +10,20 @@ import com.bumptech.glide.Glide
 import com.doanda.melodify.R
 import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.databinding.ActivityTrackBinding
-import com.doanda.melodify.ui.ViewModelFactory
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TrackActivity : AppCompatActivity() {
 
-    private val binding by lazy { ActivityTrackBinding.inflate(layoutInflater) }
+//    private val binding by lazy { ActivityTrackBinding.inflate(layoutInflater) }
+    private lateinit var binding: ActivityTrackBinding
 
-    @Inject
-    lateinit var factory: ViewModelFactory
-    private val viewModel: TrackViewModel by viewModels { factory }
+    private val trackViewModel: TrackViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityTrackBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val track: Track?
@@ -48,7 +48,7 @@ class TrackActivity : AppCompatActivity() {
         setStatusFavorite(statusFavorite)
         binding.btnFavorite.setOnClickListener {
             statusFavorite = !statusFavorite
-            viewModel.setFavoriteTrack(track, statusFavorite)
+            trackViewModel.setFavoriteTrack(track, statusFavorite)
             setStatusFavorite(statusFavorite)
         }
     }
