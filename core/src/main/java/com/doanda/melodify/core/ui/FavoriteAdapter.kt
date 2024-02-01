@@ -1,15 +1,14 @@
-package com.doanda.melodify.ui.favorite
+package com.doanda.melodify.core.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.doanda.melodify.core.databinding.ItemFavoriteBinding
 import com.doanda.melodify.core.domain.model.Track
-import com.doanda.melodify.databinding.ItemFavoriteBinding
 
-class FavoriteAdapter : ListAdapter<Track, FavoriteAdapter.ViewHolder>(DIFF_CALLBACK)
+class FavoriteAdapter : androidx.recyclerview.widget.ListAdapter<Track, FavoriteAdapter.ViewHolder>(DIFF_CALLBACK)
 {
     private lateinit var onItemClickCallback: OnItemClickCallback
 

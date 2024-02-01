@@ -8,22 +8,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.core.ui.TrackAdapter
 import com.doanda.melodify.databinding.FragmentHomeBinding
 import com.doanda.melodify.ui.track.TrackActivity
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
 //    private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private val homeViewModel: HomeViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModel()
 
     private lateinit var trackAdapter: TrackAdapter
 

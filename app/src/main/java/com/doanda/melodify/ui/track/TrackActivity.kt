@@ -3,22 +3,20 @@ package com.doanda.melodify.ui.track
 import android.content.res.ColorStateList
 import android.os.Build
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.doanda.melodify.R
 import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.databinding.ActivityTrackBinding
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-@AndroidEntryPoint
 class TrackActivity : AppCompatActivity() {
 
 //    private val binding by lazy { ActivityTrackBinding.inflate(layoutInflater) }
     private lateinit var binding: ActivityTrackBinding
 
-    private val trackViewModel: TrackViewModel by viewModels()
+    private val trackViewModel: TrackViewModel by viewModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

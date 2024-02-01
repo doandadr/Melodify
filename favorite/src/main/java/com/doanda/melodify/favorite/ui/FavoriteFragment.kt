@@ -1,4 +1,4 @@
-package com.doanda.melodify.ui.favorite
+package com.doanda.melodify.favorite.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,21 +6,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.doanda.melodify.core.domain.model.Track
-import com.doanda.melodify.databinding.FragmentFavoriteBinding
+import com.doanda.melodify.core.ui.FavoriteAdapter
+import com.doanda.melodify.favorite.databinding.FragmentFavoriteBinding
+import com.doanda.melodify.favorite.koin.favoriteModule
 import com.doanda.melodify.ui.track.TrackActivity
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.core.context.loadKoinModules
 
-@AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
 //    private val binding by lazy { FragmentFavoriteBinding.inflate(layoutInflater) }
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
 
-    private val favoriteViewModel: FavoriteViewModel by viewModels()
+    private val favoriteViewModel: FavoriteViewModel by viewModel()
 
     private lateinit var favoriteAdapter: FavoriteAdapter
 
@@ -33,6 +34,8 @@ class FavoriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        loadKoinModules(favoriteModule)
 
         favoriteAdapter = FavoriteAdapter()
         favoriteAdapter.setOnItemClickCallback(object : FavoriteAdapter.OnItemClickCallback {

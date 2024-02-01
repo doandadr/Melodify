@@ -10,24 +10,21 @@ import com.doanda.melodify.core.utils.AppExecutors
 import com.doanda.melodify.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class TrackRepository @Inject constructor(
+class TrackRepository(
     private val remoteDataSource: RemoteDataSource,
     private val localDataSource: LocalDataSource,
     private val appExecutors: AppExecutors
 ) : ITrackRepository{
 
-    override fun getAllTracks(): Flow<com.doanda.melodify.core.data.Resource<List<Track>>> =
-        object : com.doanda.melodify.core.data.NetworkBoundResource<List<Track>, List<TrackResponse>>(appExecutors) {
+    override fun getAllTracks(): Flow<Resource<List<Track>>> =
+        object : NetworkBoundResource<List<Track>, List<TrackResponse>>(appExecutors) {
             override fun loadFromDB(): Flow<List<Track>> {
                 return localDataSource.getAllTracks().map { DataMapper.mapEntitiesToDomain(it) }
             }
 
             override fun shouldFetch(data: List<Track>?): Boolean =
-                data == null || data.isEmpty()
+                data.isNullOrEmpty()
 
             override suspend fun createCall(): Flow<ApiResponse<List<TrackResponse>>> =
                 remoteDataSource.getAllTracks()
