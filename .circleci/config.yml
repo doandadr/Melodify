@@ -6,8 +6,10 @@ orbs:
 
 jobs:
   build:
-    docker:
-      - image: circleci/android:api-30
+    executor:
+      name: android/android-machine
+      resource-class: large
+      tag: ^2.0.0+2
     steps:
       - checkout
       - restore_cache:
