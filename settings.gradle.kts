@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Melodify"
 include(":app")
- 
+include(":core")
+include(":favorite")
