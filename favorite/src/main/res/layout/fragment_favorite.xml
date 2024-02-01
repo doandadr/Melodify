@@ -14,7 +14,7 @@
         android:layout_marginEnd="16dp"
         android:textAlignment="center"
         android:textSize="20sp"
-        android:text="Favorite Page"
+        android:text="@string/favorite_page"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

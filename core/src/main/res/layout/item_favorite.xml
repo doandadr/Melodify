@@ -28,7 +28,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_item_favorite_cover"
             app:layout_constraintTop_toTopOf="parent" />
@@ -39,7 +38,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_item_favorite_cover"
             app:layout_constraintTop_toBottomOf="@+id/tv_item_favorite_title" />
@@ -50,7 +48,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_item_favorite_cover"
             app:layout_constraintTop_toBottomOf="@+id/tv_item_favorite_artist" />

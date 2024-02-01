@@ -4,4 +4,6 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_favorite">Favorite</string>
+    <string name="favorite">Favorite</string>
+    <string name="home_page">Home Page</string>
 </resources>
