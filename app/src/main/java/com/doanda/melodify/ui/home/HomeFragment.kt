@@ -17,9 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 
-//    private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { FragmentHomeBinding.inflate(layoutInflater) }
 
     private val homeViewModel: HomeViewModel by viewModel()
 
@@ -30,7 +28,6 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return binding.root
     }
 

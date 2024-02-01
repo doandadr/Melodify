@@ -17,9 +17,7 @@ import org.koin.core.context.loadKoinModules
 
 class FavoriteFragment : Fragment() {
 
-//    private val binding by lazy { FragmentFavoriteBinding.inflate(layoutInflater) }
-    private var _binding: FragmentFavoriteBinding? = null
-    private val binding get() = _binding!!
+    private val binding by lazy { FragmentFavoriteBinding.inflate(layoutInflater) }
 
     private val favoriteViewModel: FavoriteViewModel by viewModel()
 
@@ -28,7 +26,6 @@ class FavoriteFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }
 
