@@ -1,5 +1,6 @@
 package com.doanda.melodify.favorite.ui
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,18 +11,23 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.core.ui.FavoriteAdapter
+import com.doanda.melodify.favorite.ViewModelFactory
 import com.doanda.melodify.favorite.databinding.FragmentFavoriteBinding
 import com.doanda.melodify.ui.track.TrackActivity
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-@AndroidEntryPoint
+//@AndroidEntryPoint
 class FavoriteFragment : Fragment() {
 
 //    private val binding by lazy { FragmentFavoriteBinding.inflate(layoutInflater) }
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
 
-    private val favoriteViewModel: FavoriteViewModel by viewModels()
+//    private val favoriteViewModel: FavoriteViewModel by viewModels()
+    @Inject
+    lateinit var factory: ViewModelFactory
+    private val favoriteViewModel: FavoriteViewModel by viewModels { factory }
 
     private lateinit var favoriteAdapter: FavoriteAdapter
 
@@ -30,6 +36,10 @@ class FavoriteFragment : Fragment() {
     ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
