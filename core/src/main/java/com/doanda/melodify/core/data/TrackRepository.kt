@@ -24,7 +24,7 @@ class TrackRepository(
             }
 
             override fun shouldFetch(data: List<Track>?): Boolean =
-                data == null || data.isEmpty()
+                data.isNullOrEmpty()
 
             override suspend fun createCall(): Flow<ApiResponse<List<TrackResponse>>> =
                 remoteDataSource.getAllTracks()
