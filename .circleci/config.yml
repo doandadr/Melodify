@@ -2,12 +2,10 @@ version: 2.1
 
 orbs:
   android: circleci/android@2.4.0
-  gcp-cli: circleci/gcp-cli@2.2.0
 
 jobs:
   build:
-    executor:
-      name: android/android-machine
+    executor: android/android
     steps:
       - checkout
       - restore_cache:
