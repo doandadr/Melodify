@@ -62,6 +62,7 @@ class FavoriteFragment : Fragment() {
     private fun observeFavoriteTracksData() {
         favoriteViewModel.favoriteTracks.observe(viewLifecycleOwner) { trackList ->
             if (trackList.isNullOrEmpty()) {
+                favoriteAdapter.submitList(trackList)
                 showEmpty(true)
             } else {
                 favoriteAdapter.submitList(trackList)
