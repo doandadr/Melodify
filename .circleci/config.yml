@@ -13,8 +13,6 @@ jobs:
       - restore_cache:
           key: android-orb-v1-
       - run:
-          name: Set Java Version
-          command: echo 'export JAVA_HOME=C:\Program%20Files\Java\jdk-17.0.10+7' >> $BASH_ENV && source $BASH_ENV
       - run:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
