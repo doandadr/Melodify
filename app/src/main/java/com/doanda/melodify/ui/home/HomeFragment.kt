@@ -13,7 +13,7 @@ import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.core.ui.TrackAdapter
 import com.doanda.melodify.databinding.FragmentHomeBinding
 import com.doanda.melodify.ui.track.TrackActivity
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
 

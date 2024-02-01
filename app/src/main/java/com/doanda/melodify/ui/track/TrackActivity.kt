@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.doanda.melodify.R
 import com.doanda.melodify.core.domain.model.Track
 import com.doanda.melodify.databinding.ActivityTrackBinding
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TrackActivity : AppCompatActivity() {
 
