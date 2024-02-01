@@ -1,6 +1,6 @@
 plugins {
+    id("kotlin-android")
     id("com.android.dynamic-feature")
-    id("org.jetbrains.kotlin.android")
 }
 apply(from = "../shared_dependencies.gradle")
 

@@ -6,11 +6,15 @@ orbs:
 
 jobs:
   build:
-    executor: android/android
+    docker:
+      - image: circleci/android:api-30
     steps:
       - checkout
       - restore_cache:
           key: android-orb-v1-
+      - run:
+          name: Set Java Version
+          command: echo 'export JAVA_HOME=/usr/lib/jvm/zulu-11-amd64' >> $BASH_ENV && source $BASH_ENV
       - run:
           name: Chmod permissions
           command: sudo chmod +x ./gradlew
