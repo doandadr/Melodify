@@ -1,5 +1,6 @@
 package com.doanda.melodify.core.utils
 
+import android.text.format.DateUtils
 import com.doanda.melodify.core.data.source.local.entity.TrackEntity
 import com.doanda.melodify.core.data.source.remote.response.TrackResponse
 import com.doanda.melodify.core.domain.model.Track
@@ -86,4 +87,8 @@ object DataMapper {
         type                  = input.type                 ,
         isFavorite            = input.isFavorite           ,
     )
+
+    fun formatDuration(seconds: Int) : String {
+        return DateUtils.formatElapsedTime(seconds.toLong())
+    }
 }

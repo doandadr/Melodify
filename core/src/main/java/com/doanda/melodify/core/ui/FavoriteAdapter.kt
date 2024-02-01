@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.doanda.melodify.core.databinding.ItemFavoriteBinding
 import com.doanda.melodify.core.domain.model.Track
+import com.doanda.melodify.core.utils.DataMapper.formatDuration
 
 class FavoriteAdapter : androidx.recyclerview.widget.ListAdapter<Track, FavoriteAdapter.ViewHolder>(DIFF_CALLBACK)
 {
@@ -26,7 +27,7 @@ class FavoriteAdapter : androidx.recyclerview.widget.ListAdapter<Track, Favorite
             with(binding) {
                 tvItemFavoriteTitle.text = track.title
                 tvItemFavoriteArtist.text = track.artistName
-                tvItemFavoriteDuration.text = track.duration.toString()
+                tvItemFavoriteDuration.text = formatDuration(track.duration)
 
                 Glide.with(itemView.context)
                     .load(track.albumCover)
