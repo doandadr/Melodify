@@ -62,10 +62,6 @@ dependencies {
     // GENERAL
     implementation("androidx.appcompat:appcompat:1.6.1")
 
-    // KOTLIN
-    implementation("androidx.core:core-ktx:1.12.0")
-    api("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
-
     // MATERIAL
     implementation("com.google.android.material:material:1.11.0")
 

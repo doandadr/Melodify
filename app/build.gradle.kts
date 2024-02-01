@@ -1,11 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-android")
     id("kotlin-parcelize")
     id("kotlin-kapt")
-    id("com.google.dagger.hilt.android")
-    id("androidx.navigation.safeargs")
 }
 apply(from = "../shared_dependencies.gradle")
 
@@ -50,6 +47,7 @@ dependencies {
     implementation(project(":core"))
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.22")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
 
     // VIEWPAGER
     implementation("androidx.viewpager2:viewpager2:1.0.0")

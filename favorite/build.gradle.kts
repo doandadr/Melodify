@@ -1,11 +1,6 @@
 plugins {
     id("com.android.dynamic-feature")
     id("org.jetbrains.kotlin.android")
-    id("kotlin-android")
-    id("kotlin-parcelize")
-    id("kotlin-kapt")
-    id("com.google.dagger.hilt.android")
-    id("androidx.navigation.safeargs")
 }
 apply(from = "../shared_dependencies.gradle")
 

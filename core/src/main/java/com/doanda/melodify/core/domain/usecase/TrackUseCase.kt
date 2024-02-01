@@ -1,8 +1,6 @@
 package com.doanda.melodify.core.domain.usecase
 
-import com.doanda.melodify.core.data.Resource
 import com.doanda.melodify.core.domain.model.Track
-import dagger.Provides
 import kotlinx.coroutines.flow.Flow
 
 interface TrackUseCase {
