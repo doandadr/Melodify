@@ -8,8 +8,6 @@ jobs:
   build:
     executor:
       name: android/android-machine
-      resource-class: large
-      tag: ^2.0.0+2
     steps:
       - checkout
       - restore_cache:
