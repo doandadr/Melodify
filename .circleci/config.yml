@@ -6,9 +6,11 @@ orbs:
 
 jobs:
   unit-test:
-    executor:
-      name: android/android-machine
-      resource_class: medium
+#    executor:
+#      name: android/android-machine
+#      resource_class: medium
+    docker:
+      - image: cimg/openjdk:17.0.10
     steps:
       - checkout
       - android/restore-gradle-cache
@@ -53,9 +55,11 @@ jobs:
 #          path: ~/test-results/junit
 
   benchmarks-emulator:
-    executor:
-      name: android/android-machine
-      resource_class: medium
+    #    executor:
+    #      name: android/android-machine
+    #      resource_class: medium
+    docker:
+      - image: cimg/openjdk:17.0.10
 
     steps:
       - checkout
@@ -75,10 +79,12 @@ jobs:
           path: ~/benchmarks
 
   benchmarks-ftl:
-    executor:
-      name: android/android
-      sdk-version: "30"
-      variant: node
+#    executor:
+#      name: android/android
+#      sdk-version: "30"
+#      variant: node
+    docker:
+      - image: cimg/openjdk:17.0.10
     steps:
       - checkout
       - android/restore-gradle-cache
@@ -114,9 +120,11 @@ jobs:
           command: node scripts/eval_startup_benchmark_output.js
 
   release-build:
-    executor:
-      name: android/android-machine
-      resource_class: medium
+#    executor:
+#      name: android/android-machine
+#      resource_class: medium
+    docker:
+      - image: cimg/openjdk:17.0.10
     steps:
       - checkout
       - android/restore-gradle-cache
