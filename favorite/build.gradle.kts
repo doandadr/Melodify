@@ -1,6 +1,6 @@
 plugins {
-    id("com.android.dynamic-feature")
     id("org.jetbrains.kotlin.android")
+    id("com.android.dynamic-feature")
 }
 apply(from = "../shared_dependencies.gradle")
 
@@ -18,15 +18,6 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
-    }
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
     }
     buildFeatures {
         viewBinding = true
