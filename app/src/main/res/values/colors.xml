@@ -7,13 +7,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
-    <color name="theme_orange">#ffef741b</color>
-    <color name="theme_soft_orange">#ffeecb89</color>
     <color name="theme_dark_red">#ff581522</color>
-    <color name="theme_bronze">#ffa47552</color>
-    <color name="theme_tan">#ffd8c5b7</color>
-    <color name="theme_green">#ff2e603a</color>
-
 
 </resources>
