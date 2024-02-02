@@ -1,4 +1,4 @@
-package com.doanda.melodify.dummy_data
+package com.doanda.melodify.core.dummy_data
 
 import com.doanda.melodify.core.data.source.local.entity.TrackEntity
 import com.doanda.melodify.core.data.source.remote.response.Album
