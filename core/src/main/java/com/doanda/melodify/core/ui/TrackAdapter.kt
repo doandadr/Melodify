@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.doanda.melodify.core.databinding.ItemTrackBinding
 import com.doanda.melodify.core.domain.model.Track
+import com.doanda.melodify.core.utils.DataMapper.formatDuration
 
 class TrackAdapter : ListAdapter<Track, TrackAdapter.ViewHolder>(DIFF_CALLBACK)
 {
@@ -27,7 +28,7 @@ class TrackAdapter : ListAdapter<Track, TrackAdapter.ViewHolder>(DIFF_CALLBACK)
             with(binding) {
                 tvItemTrackTitle.text = track.title
                 tvItemTrackArtist.text = track.artistName
-                tvItemTrackDuration.text = track.duration.toString()
+                tvItemTrackDuration.text = formatDuration(track.duration)
 
                 Glide.with(itemView.context)
                     .load(track.albumCover)

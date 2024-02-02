@@ -13,15 +13,13 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class TrackActivity : AppCompatActivity() {
 
-//    private val binding by lazy { ActivityTrackBinding.inflate(layoutInflater) }
-    private lateinit var binding: ActivityTrackBinding
+    private val binding by lazy { ActivityTrackBinding.inflate(layoutInflater) }
 
     private val trackViewModel: TrackViewModel by viewModel()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityTrackBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val track: Track?
